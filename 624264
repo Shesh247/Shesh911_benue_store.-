@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shesh911 Benue Store | Agricultural produce from Benue State</title>
+<meta name="description" content="Garri, rice, beans, flours, sesame and other non-perishable agricultural produce from Benue State. Retail and bulk supply. Order on WhatsApp.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #F7F7F3;
+    --surface: #FFFFFF;
+    --ink: #17231C;
+    --muted: #55645A;
+    --line: #DADFD3;
+    --green: #0F3D2B;
+    --green-2: #165239;
+    --gold: #B08A2E;
+    --gold-soft: #D4AF55;
+    --btn: #0F3D2B;
+    --btn-ink: #FFFFFF;
+    --danger: #B3261E;
+    --serif: Georgia, "Times New Roman", serif;
+    --shadow: 0 1px 2px rgba(23,35,28,.06), 0 6px 18px -10px rgba(23,35,28,.25);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0E1612; --surface: #16201A; --ink: #EDF1E9; --muted: #A5B2A8; --line: #263329;
+      --btn: #D4AF55; --btn-ink: #1B1400; --gold: #D4AF55; --danger: #FF8A80;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px -10px rgba(0,0,0,.7);
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 16.5px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 2px; border-radius: 3px; }
+  .wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  h1, h2, h3 { margin: 0; font-family: var(--serif); font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.7rem); }
+  h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+  h3 { font-size: 1.15rem; }
+  p { margin: 0; }
+  .rule { width: 56px; height: 3px; background: var(--gold); margin: 1rem 0 1.2rem; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; font: inherit; font-weight: 600; letter-spacing: .01em; padding: .75rem 1.4rem; min-height: 48px; border-radius: 4px; border: 1.5px solid var(--btn); background: var(--btn); color: var(--btn-ink); cursor: pointer; text-decoration: none; }
+  .btn:hover { filter: brightness(1.12); }
+  .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-outline:hover { background: var(--ink); color: var(--bg); filter: none; }
+  .btn-gold { background: var(--gold-soft); border-color: var(--gold-soft); color: #1B1400; }
+  .btn-small { min-height: 42px; padding: .45rem 1rem; font-size: .95rem; }
+  .btn[disabled] { opacity: .5; cursor: not-allowed; filter: none; }
+
+  /* Top bar + header */
+  .topbar { background: var(--green); color: #E8EFE6; font-size: .88rem; }
+  .topbar .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-top: .45rem; padding-bottom: .45rem; flex-wrap: wrap; }
+  .topbar a { color: var(--gold-soft); text-decoration: none; font-weight: 600; }
+  header.site { position: sticky; top: 0; z-index: 20; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 72px; }
+  .brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+  .brand .mark { width: 44px; height: 44px; flex: none; }
+  .brand .words { line-height: 1.1; }
+  .brand .w1 { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; letter-spacing: .02em; color: var(--green); display: block; }
+  .brand .w2 { font-size: .72rem; letter-spacing: .28em; color: var(--gold); font-weight: 600; display: block; margin-top: 3px; }
+  @media (prefers-color-scheme: dark) { .brand .w1 { color: var(--ink); } }
+  .actions { display: flex; align-items: center; gap: .6rem; }
+  .shoplink { text-decoration: none; font-weight: 600; padding: .5rem .8rem; }
+  .shoplink:hover { text-decoration: underline; text-underline-offset: 6px; text-decoration-color: var(--gold); text-decoration-thickness: 2px; }
+  @media (max-width: 640px) { .shoplink { display: none; } .brand .w2 { letter-spacing: .18em; } }
+  .cart-count { background: var(--gold-soft); color: #1B1400; min-width: 1.5rem; height: 1.5rem; border-radius: 99px; display: inline-flex; align-items: center; justify-content: center; font-size: .82rem; font-weight: 800; padding: 0 .35rem; }
+
+  /* Dropdown */
+  .dd { position: relative; }
+  .dd-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 290px; max-width: calc(100vw - 2rem); background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--gold); border-radius: 4px; box-shadow: 0 18px 40px -12px rgba(0,0,0,.35); padding: .4rem 0; z-index: 50; }
+  .dd-panel a, .dd-panel button.item { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: .7rem 1.1rem; min-height: 46px; text-decoration: none; background: none; border: 0; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+  .dd-panel a:hover, .dd-panel button.item:hover { background: var(--bg); }
+  .dd-label { padding: .6rem 1.1rem .2rem; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+  .dd-panel hr { border: 0; border-top: 1px solid var(--line); margin: .4rem 0; }
+  .dd-panel .sub { padding-left: 1.8rem; font-size: .95rem; }
+  .dd-caret { font-size: .7rem; }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; background: var(--surface); border-bottom: 1px solid var(--line); padding: clamp(2.5rem, 7vw, 5rem) 0; }
+  .hero::before { content: ""; position: absolute; right: -120px; top: -80px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(176,138,46,.10), transparent 65%); pointer-events: none; }
+  .hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .hero .kicker { color: var(--gold); font-weight: 700; letter-spacing: .06em; margin-bottom: 1rem; }
+  .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 33rem; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+  .hero-visual { position: relative; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fff; box-shadow: var(--shadow); }
+  .hero-visual svg { width: 100%; height: auto; }
+  .hero-visual img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  .stats { background: var(--green); color: #fff; }
+  .stats ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .stats li { padding: 1.3rem 1.25rem; border-left: 1px solid rgba(255,255,255,.14); }
+  .stats li:first-child { border-left: 0; }
+  .stats b { display: block; font-family: var(--serif); font-size: 1.7rem; color: var(--gold-soft); line-height: 1.1; }
+  .stats span { font-size: .93rem; opacity: .85; }
+  @media (max-width: 640px) { .stats li { border-left: 0; border-top: 1px solid rgba(255,255,255,.14); } .stats li:first-child { border-top: 0; } }
+
+  section { scroll-margin-top: 90px; }
+  .shop { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .shop-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.2rem; margin-bottom: 1.6rem; }
+  .shop-head p { color: var(--muted); max-width: 34rem; }
+  .search input { font: inherit; width: 100%; min-width: 250px; min-height: 48px; padding: .6rem 1rem; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; }
+  .search input:focus { border-color: var(--green-2); outline: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.6rem; border-bottom: 1px solid var(--line); padding-bottom: 1.1rem; }
+  .chip { font: inherit; font-weight: 600; cursor: pointer; min-height: 42px; padding: .35rem 1rem; border-radius: 4px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); }
+  .chip:hover { border-color: var(--green-2); }
+  .chip[aria-pressed="true"] { background: var(--green); color: #fff; border-color: var(--green); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 1.25rem; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+  .card:hover { box-shadow: var(--shadow); }
+  .art { position: relative; height: 200px; display: flex; align-items: center; justify-content: center; background: #F1EFE6; overflow: hidden; }
+  .art svg.sack { height: 168px; width: auto; }
+  .art img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .badge { position: absolute; top: .6rem; left: .6rem; z-index: 2; background: var(--green); color: #fff; font-size: .74rem; font-weight: 600; letter-spacing: .04em; padding: .2rem .6rem; border-radius: 3px; }
+  .badge.out { background: var(--danger); color: #fff; left: auto; right: .6rem; }
+  .card-body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .65rem; flex: 1; }
+  .card-body .cat { font-size: .85rem; color: var(--gold); font-weight: 700; letter-spacing: .03em; }
+  .card-body .desc { color: var(--muted); font-size: .94rem; }
+  .buy { margin-top: auto; display: grid; gap: .65rem; padding-top: .4rem; border-top: 1px solid var(--line); }
+  .price { font-family: var(--serif); font-weight: 700; font-size: 1.45rem; }
+  .price small { font-family: system-ui, sans-serif; font-weight: 500; font-size: .84rem; color: var(--muted); }
+  select, .field input, .field textarea, .dash input[type=number], .dash input[type=text], .dash input[type=password] { font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--line); border-radius: 4px; min-height: 44px; padding: .45rem .7rem; width: 100%; }
+  select:focus, .field input:focus, .field textarea:focus, .dash input:focus { border-color: var(--green-2); outline: none; }
+  .empty { padding: 2.5rem 1rem; text-align: center; color: var(--muted); border: 1.5px dashed var(--line); border-radius: 6px; grid-column: 1 / -1; }
+  .note { margin-top: 1.4rem; font-size: .92rem; color: var(--muted); }
+
+  .how { background: var(--surface); border-block: 1px solid var(--line); padding: clamp(3rem, 7vw, 5rem) 0; }
+  .steps { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; counter-reset: step; }
+  .steps li { counter-increment: step; border-top: 3px solid var(--green); padding-top: 1rem; }
+  .steps li::before { content: "0" counter(step); font-family: var(--serif); font-size: 1.8rem; color: var(--gold); display: block; margin-bottom: .3rem; }
+  .steps h3 { margin-bottom: .4rem; }
+  .steps p { color: var(--muted); }
+
+  .about { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
+  .about p { color: var(--muted); max-width: 35rem; }
+  .about p + p { margin-top: 1rem; }
+  .commit { margin: 0; display: grid; gap: 0; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .commit > div { padding: 1.05rem 1.3rem; border-top: 1px solid var(--line); }
+  .commit > div:first-child { border-top: 0; }
+  .commit dt { font-weight: 700; font-family: var(--serif); }
+  .commit dd { margin: .2rem 0 0; color: var(--muted); }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+
+  .contact { background: var(--surface); border-top: 1px solid var(--line); padding: clamp(2.5rem, 6vw, 4rem) 0; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.6rem; }
+  .contact-grid h3 { margin-bottom: .3rem; }
+  .contact-grid p { color: var(--muted); }
+
+  footer { background: var(--green); color: #E8EFE6; padding: 2.2rem 0; border-top: 4px solid var(--gold); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; }
+  footer .w1 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: #fff; }
+  footer p { opacity: .8; max-width: 28rem; margin-top: .3rem; }
+  footer .links { display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: flex-start; }
+  footer .links a { text-decoration: none; opacity: .9; }
+  footer .links a:hover { text-decoration: underline; }
+  .copy { margin-top: 1.6rem; font-size: .88rem; opacity: .65; }
+
+  /* Cart drawer */
+  .overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(6,10,8,.6); opacity: 0; visibility: hidden; transition: opacity .2s, visibility .2s; z-index: 55; }
+  .overlay.open { opacity: 1; visibility: visible; }
+  .drawer { position: fixed; top: 0; right: 0; height: 100vh; width: 100%; max-width: 440px; background: var(--bg); z-index: 60; display: flex; flex-direction: column; transform: translateX(100%); visibility: hidden; transition: transform .25s ease, visibility .25s; border-left: 1px solid var(--line); }
+  .drawer.open { transform: translateX(0); visibility: visible; }
+  .drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); background: var(--surface); }
+  .drawer-body { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; }
+  .drawer-foot { border-top: 1px solid var(--line); padding: 1rem 1.2rem 1.2rem; background: var(--surface); }
+  .line-item { display: grid; grid-template-columns: 1fr auto; gap: .3rem .8rem; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .line-item .t { font-weight: 700; }
+  .line-item .s { color: var(--muted); font-size: .92rem; }
+  .line-item .p { font-weight: 700; text-align: right; }
+  .qty { display: inline-flex; align-items: center; border: 1.5px solid var(--line); border-radius: 4px; overflow: hidden; }
+  .qty button { font: inherit; font-weight: 700; width: 44px; height: 44px; border: 0; background: transparent; color: var(--ink); cursor: pointer; }
+  .qty span { min-width: 2rem; text-align: center; font-weight: 600; }
+  .link-btn { font: inherit; background: none; border: 0; color: var(--muted); text-decoration: underline; cursor: pointer; min-height: 44px; padding: 0 .4rem; }
+  .icon-btn { font: inherit; width: 44px; height: 44px; border-radius: 4px; border: 1.5px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font-size: 1.3rem; }
+  .totals { display: flex; justify-content: space-between; font-family: var(--serif); font-weight: 700; font-size: 1.3rem; margin-bottom: .8rem; }
+  .field { display: grid; gap: .25rem; margin-bottom: .7rem; }
+  .field label { font-weight: 600; font-size: .93rem; }
+  .field textarea { min-height: 70px; resize: vertical; }
+  .error { color: var(--danger); font-size: .92rem; min-height: 1.3em; margin-bottom: .4rem; }
+  .fine { font-size: .85rem; color: var(--muted); margin-top: .6rem; }
+  .toast { position: fixed; left: 50%; bottom: 1.4rem; transform: translate(-50%, 20px); background: var(--green); color: #fff; padding: .7rem 1.1rem; border-radius: 4px; border-left: 4px solid var(--gold-soft); font-weight: 600; opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; z-index: 80; max-width: 92vw; }
+  .toast.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+
+  /* Dashboard */
+  .dash { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 70; background: var(--bg); overflow-y: auto; }
+  .dash-top { background: var(--green); color: #fff; border-bottom: 4px solid var(--gold); position: sticky; top: 0; z-index: 2; }
+  .dash-top .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 1rem; }
+  .dash-top h2 { font-size: 1.3rem; color: #fff; }
+  .dash-top .btn-outline { color: #fff; border-color: rgba(255,255,255,.6); }
+  .dash-top .btn-outline:hover { background: #fff; color: var(--green); }
+  .dash-main { padding: 1.5rem 0 3rem; }
+  .gate { max-width: 380px; margin: 3rem auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1.6rem; }
+  .gate p { color: var(--muted); margin: .5rem 0 1rem; }
+  .tabs { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.4rem; border-bottom: 1px solid var(--line); }
+  .tab { font: inherit; font-weight: 600; background: none; border: 0; border-bottom: 3px solid transparent; padding: .7rem 1rem; min-height: 46px; cursor: pointer; color: var(--muted); }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+  .kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.2rem; border-top: 3px solid var(--green); }
+  .kpi b { display: block; font-family: var(--serif); font-size: 1.8rem; line-height: 1.15; }
+  .kpi span { color: var(--muted); font-size: .92rem; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1.1rem 1.2rem; margin-top: 1.2rem; }
+  .prow { display: grid; grid-template-columns: 1fr 130px 90px; gap: .7rem; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--line); }
+  .prow.head { font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 700; }
+  .prow label.tg { display: flex; align-items: center; gap: .4rem; cursor: pointer; min-height: 44px; }
+  .prow input[type=checkbox] { width: 22px; height: 22px; }
+  .order { padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .order .meta { color: var(--muted); font-size: .9rem; }
+  .order ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+  .dash .field { max-width: 420px; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .drawer, .overlay, .toast { transition: none; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="emblem" viewBox="0 0 200 200"><clipPath id="emClip"><circle cx="100" cy="100" r="84"/></clipPath>
+<circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" stroke-width="5"/>
+<circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<circle cx="100" cy="50" r="13" fill="currentColor"/>
+<g stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="80.0" y1="50.0" x2="71.0" y2="50.0"/><line x1="81.5" y1="42.3" x2="73.2" y2="38.9"/><line x1="85.9" y1="35.9" x2="79.5" y2="29.5"/><line x1="92.3" y1="31.5" x2="88.9" y2="23.2"/><line x1="100.0" y1="30.0" x2="100.0" y2="21.0"/><line x1="107.7" y1="31.5" x2="111.1" y2="23.2"/><line x1="114.1" y1="35.9" x2="120.5" y2="29.5"/><line x1="118.5" y1="42.3" x2="126.8" y2="38.9"/><line x1="120.0" y1="50.0" x2="129.0" y2="50.0"/></g>
+<g fill="currentColor"><ellipse cx="91" cy="106" rx="4" ry="9" transform="rotate(-38 91 106)"/><ellipse cx="109" cy="106" rx="4" ry="9" transform="rotate(38 109 106)"/><ellipse cx="91" cy="118" rx="4" ry="9" transform="rotate(-38 91 118)"/><ellipse cx="109" cy="118" rx="4" ry="9" transform="rotate(38 109 118)"/><ellipse cx="91" cy="130" rx="4" ry="9" transform="rotate(-38 91 130)"/><ellipse cx="109" cy="130" rx="4" ry="9" transform="rotate(38 109 130)"/><ellipse cx="100" cy="90" rx="4.5" ry="11"/></g>
+<line x1="100" y1="92" x2="100" y2="148" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+<g clip-path="url(#emClip)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+<path d="M34 152 q16 -11 33 0 t33 0 t33 0 t33 0"/>
+<path d="M34 164 q16 -11 33 0 t33 0 t33 0 t33 0"/>
+<path d="M34 176 q16 -11 33 0 t33 0 t33 0 t33 0"/>
+</g></symbol></defs></svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Agricultural produce supplier, Benue State, Nigeria</span>
+    <span>Orders and enquiries: <a id="topWhatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Shesh911 Benue Store, home">
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#0F3D2B"/><circle cx="24" cy="24" r="21.3" fill="none" stroke="#D4AF55" stroke-width="1.4"/><use href="#emblem" x="9" y="9" width="30" height="30" color="#FFFFFF"/></svg>
+      <span class="words"><span class="w1">SHESH911</span><span class="w2">BENUE STORE</span></span>
+    </a>
+    <div class="actions">
+      <a class="shoplink" href="#shop">Shop</a>
+      <div class="dd" id="dd">
+        <button class="btn btn-outline btn-small" id="menuBtn" aria-haspopup="true" aria-expanded="false" aria-controls="menuPanel">Menu <span class="dd-caret" aria-hidden="true">&#9660;</span></button>
+        <div class="dd-panel" id="menuPanel" hidden>
+          <a href="#top" data-close>Home</a>
+          <a href="#shop" data-close>Shop all products</a>
+          <div class="dd-label">Shop by category</div>
+          <div id="menuCats"></div>
+          <hr>
+          <a href="#how" data-close>How to order</a>
+          <a href="#about" data-close>About us</a>
+          <a href="#contact" data-close>Contact</a>
+          <hr>
+          <button class="item" type="button" id="openDash">Dashboard <span aria-hidden="true">&#128274;</span></button>
+        </div>
+      </div>
+      <button class="btn btn-small" id="openCart" aria-haspopup="dialog">Cart <span class="cart-count" id="cartCount" aria-live="polite">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">Retail and bulk supply</div>
+        <h1>Quality garri, grains and farm produce from Benue State.</h1>
+        <div class="rule"></div>
+        <p class="lead">Shesh911 Benue Store supplies non-perishable agricultural products to households, restaurants and resellers. Select your products, send your order on WhatsApp, and we confirm price and delivery before you pay.</p>
+        <div class="cta">
+          <a class="btn" href="#shop">View products</a>
+          <a class="btn btn-outline" id="heroWhatsapp" href="#" target="_blank" rel="noopener">Request a quote</a>
+        </div>
+      </div>
+      <div class="hero-visual" id="heroVisual">
+        <svg viewBox="0 0 560 220" role="img" aria-label="Shesh911 Benue Store logo"><rect width="560" height="220" fill="#FFFFFF"/>
+<g id="wmGroup" color="#0F3D2B" opacity=".09"><use href="#emblem" x="190" y="-25" width="270" height="270"/></g>
+<circle cx="105" cy="110" r="76" fill="#0F3D2B"/>
+<circle cx="105" cy="110" r="70" fill="none" stroke="#D4AF55" stroke-width="2.5"/>
+<use href="#emblem" x="48" y="53" width="114" height="114" color="#FFFFFF"/>
+<text x="205" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700" fill="#0F3D2B" letter-spacing="1">SHESH911</text>
+<rect x="206" y="124" width="300" height="3" fill="#B08A2E"/>
+<text x="206" y="156" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#8A6A1F" letter-spacing="9">BENUE STORE</text>
+<text x="206" y="184" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-style="italic" fill="#55645A">Food Basket of the Nation</text></svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      <ul>
+        <li><b id="statCount">18</b><span>agricultural products</span></li>
+        <li><b>1 to 50 kg</b><span>retail and bulk bag sizes</span></li>
+        <li><b>Dry goods</b><span>shelf-stable, no perishables</span></li>
+        <li><b>WhatsApp</b><span>direct ordering and support</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="shop" id="shop">
+    <div class="wrap">
+      <div class="shop-head">
+        <div>
+          <h2>Our products</h2>
+          <div class="rule"></div>
+          <p>Choose a bag size and add it to your cart. Your order is sent to us on WhatsApp for confirmation.</p>
+        </div>
+        <div class="search">
+          <label class="sr-only" for="q">Search products</label>
+          <input id="q" type="search" placeholder="Search garri, rice, beans..." autocomplete="off">
+        </div>
+      </div>
+      <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+      <div class="grid" id="grid" aria-live="polite"></div>
+      <p class="note">Prices are indicative and may change with market conditions. The final price and delivery cost are confirmed on WhatsApp before payment.</p>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <h2>How to order</h2>
+      <div class="rule"></div>
+      <ol class="steps">
+        <li><h3>Select products</h3><p>Choose products and bag sizes, then review your cart.</p></li>
+        <li><h3>Submit your order</h3><p>Enter your name and delivery address. WhatsApp opens with your order already written.</p></li>
+        <li><h3>Confirm and pay</h3><p>We reply with the final price and delivery cost. Once payment is made, we dispatch your order.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <h2>About Shesh911 Benue Store</h2>
+        <div class="rule"></div>
+        <p>Benue State is widely known as the Food Basket of the Nation. We source dry agricultural produce from the region, including garri, rice, beans, flours, sesame and spices, and supply it in sizes suited to homes and businesses.</p>
+        <p>We deal only in shelf-stable goods. This keeps quality consistent and makes storage and delivery straightforward.</p>
+      </div>
+      <dl class="commit">
+        <div><dt>Households</dt><dd>Retail sizes from 1 kg, so you can stock up without waste.</dd></div>
+        <div><dt>Restaurants and resellers</dt><dd>25 kg and 50 kg bags. Contact us for bulk pricing.</dd></div>
+        <div><dt>Transparent pricing</dt><dd>Prices and delivery costs are confirmed with you before payment.</dd></div>
+        <div><dt>Special requests</dt><dd>Need a product that is not listed? Ask us and we will source it where possible.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="rule"></div>
+      <div class="contact-grid">
+        <div><h3>Orders and enquiries</h3><p>Message us on WhatsApp for orders, bulk quotes and delivery questions.</p><p style="margin-top:.8rem"><a class="btn btn-small" id="contactWhatsapp" href="#" target="_blank" rel="noopener">Open WhatsApp</a></p></div>
+        <div><h3>Location</h3><p>Benue State, Nigeria.</p></div>
+        <div><h3>Delivery</h3><p>Arranged per order. The delivery cost depends on your location and is confirmed before payment.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="w1">SHESH911 BENUE STORE</div>
+        <p>Agricultural produce supplier, Benue State, Nigeria.</p>
+      </div>
+      <div class="links">
+        <a href="#shop">Shop</a><a href="#how">How to order</a><a href="#about">About</a><a href="#contact">Contact</a>
+      </div>
+    </div>
+    <p class="copy">&copy; <span id="yr"></span> Shesh911 Benue Store. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <h2 id="drawerTitle" style="font-size:1.4rem">Your cart</h2>
+    <button class="icon-btn" id="closeCart" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot">
+    <div class="totals"><span>Subtotal</span><span id="subtotal">₦0</span></div>
+    <div class="field"><label for="cName">Your name</label><input id="cName" autocomplete="name"></div>
+    <div class="field"><label for="cPhone">Phone number</label><input id="cPhone" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="cAddr">Delivery address</label><textarea id="cAddr" autocomplete="street-address"></textarea></div>
+    <div class="error" id="formError" role="alert"></div>
+    <button class="btn" style="width:100%" id="sendOrder">Send order on WhatsApp</button>
+    <p class="fine">Delivery cost is added after we confirm your address.</p>
+  </div>
+</aside>
+
+<!-- Dashboard -->
+<div class="dash" id="dash" role="dialog" aria-modal="true" aria-labelledby="dashTitle" hidden>
+  <div class="dash-top"><div class="wrap">
+    <h2 id="dashTitle">Store dashboard</h2>
+    <button class="btn btn-outline btn-small" id="closeDash">Close</button>
+  </div></div>
+  <div class="wrap dash-main">
+    <div class="gate" id="dashGate">
+      <h3>Owner access</h3>
+      <p>Enter your PIN to manage prices, stock and orders.</p>
+      <div class="field"><label for="pin">PIN</label><input id="pin" type="password" inputmode="numeric" autocomplete="off"></div>
+      <div class="error" id="pinError" role="alert"></div>
+      <button class="btn" id="unlock" style="width:100%">Unlock</button>
+    </div>
+    <div id="dashApp" hidden>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="overview" aria-selected="true">Overview</button>
+        <button class="tab" role="tab" data-tab="products" aria-selected="false">Products</button>
+        <button class="tab" role="tab" data-tab="orders" aria-selected="false">Orders</button>
+        <button class="tab" role="tab" data-tab="settings" aria-selected="false">Settings</button>
+      </div>
+      <div id="tab-overview"></div>
+      <div id="tab-products" hidden></div>
+      <div id="tab-orders" hidden></div>
+      <div id="tab-settings" hidden></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+  /* ====== EDIT THESE ====== */
+  // WhatsApp number: international format, digits only (Nigeria: 234 + number without the leading 0).
+  // You can also change it later in the Dashboard > Settings.
+  var WHATSAPP = "2340000000000";
+  // First-time dashboard PIN. Change it in Dashboard > Settings.
+  var DEFAULT_PIN = "1234";
+  // Photos: put images in an "images" folder next to index.html, named after the product id, e.g. images/garri-white.jpg
+  // perKg = naira per kg. sizes are in kg (0.5 = 500 g). color = grain color on the fallback sack drawing.
+  var PRODUCTS = [
+    { id: "garri-white",  name: "White garri",         cat: "Garri",            perKg: 1800, sizes: [1, 5, 25, 50], color: "#F7F0D2", desc: "Crisp, sun-dried white garri for eba and soaking." },
+    { id: "garri-yellow", name: "Yellow garri",        cat: "Garri",            perKg: 2000, sizes: [1, 5, 25, 50], color: "#F2B400", desc: "Palm-oil rich yellow garri with a fuller taste." },
+    { id: "garri-ijebu",  name: "Ijebu garri",         cat: "Garri",            perKg: 2200, sizes: [1, 5, 25, 50], color: "#EADFB0", desc: "Fine, sour-edged grains that swell well in water." },
+    { id: "yam-flour",    name: "Yam flour (elubo)",   cat: "Flours",           perKg: 2500, sizes: [1, 5, 25],     color: "#CDB48E", desc: "Milled dry yam for smooth amala." },
+    { id: "pounded-yam",  name: "Pounded yam flour",   cat: "Flours",           perKg: 3000, sizes: [1, 5, 25],     color: "#F1E6D2", desc: "Instant flour. Stir into hot water and serve." },
+    { id: "cassava-flour",name: "Cassava flour",       cat: "Flours",           perKg: 1600, sizes: [1, 5, 25],     color: "#F8F4E8", desc: "Fine flour for fufu, baking and swallows." },
+    { id: "rice-local",   name: "Local rice",          cat: "Rice and grains",  perKg: 2300, sizes: [1, 5, 25, 50], color: "#F4F0DC", desc: "Stone-free local rice, bagged for the pot." },
+    { id: "maize",        name: "Dry maize",           cat: "Rice and grains",  perKg: 900,  sizes: [1, 5, 25, 50], color: "#E5A812", desc: "Dry yellow and white maize for milling or pap." },
+    { id: "millet",       name: "Millet",              cat: "Rice and grains",  perKg: 1500, sizes: [1, 5, 25],     color: "#D9B24C", desc: "Whole millet for fura, kunu and porridge." },
+    { id: "sorghum",      name: "Guinea corn",         cat: "Rice and grains",  perKg: 1200, sizes: [1, 5, 25, 50], color: "#A9472A", desc: "Sorghum grain for pap, kunu and brewing." },
+    { id: "beans-brown",  name: "Brown beans",         cat: "Beans and nuts",   perKg: 2600, sizes: [1, 5, 25, 50], color: "#7A4326", desc: "Sorted brown beans with a rich flavour." },
+    { id: "beans-white",  name: "White beans",         cat: "Beans and nuts",   perKg: 2800, sizes: [1, 5, 25, 50], color: "#F0E7CF", desc: "Soft-cooking white beans for moi moi and akara." },
+    { id: "soybeans",     name: "Soybeans",            cat: "Beans and nuts",   perKg: 1800, sizes: [1, 5, 25, 50], color: "#D9C479", desc: "Clean dry soybeans for milk, flour and feed mixes." },
+    { id: "groundnut",    name: "Groundnut (shelled)", cat: "Beans and nuts",   perKg: 3500, sizes: [1, 5, 25],     color: "#C98B50", desc: "Raw shelled groundnuts for roasting or oil." },
+    { id: "sesame",       name: "Sesame (beniseed)",   cat: "Seeds and spices", perKg: 3200, sizes: [1, 5, 25, 50], color: "#EFE3BF", desc: "Clean sesame seed, a Benue speciality." },
+    { id: "egusi",        name: "Egusi (melon seed)",  cat: "Seeds and spices", perKg: 6000, sizes: [0.5, 1, 5],    color: "#D8C677", desc: "Shelled melon seed for soups." },
+    { id: "ginger",       name: "Dried ginger",        cat: "Seeds and spices", perKg: 5000, sizes: [0.5, 1, 5],    color: "#C9994A", desc: "Split dried ginger for tea, spice and powder." },
+    { id: "pepper",       name: "Dried pepper",        cat: "Seeds and spices", perKg: 7000, sizes: [0.5, 1, 5],    color: "#C0281C", desc: "Hot dried pepper for stews and grinding." }
+  ];
+  /* ======================== */
+
+  function $(s) { return document.querySelector(s); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function fmt(n) { return "₦" + Math.round(n).toLocaleString("en-NG"); }
+  function sizeLabel(kg) { return kg < 1 ? (kg * 1000) + " g" : kg + " kg"; }
+  function find(id) { for (var i = 0; i < PRODUCTS.length; i++) if (PRODUCTS[i].id === id) return PRODUCTS[i]; }
+  function defaultSize(p) { return p.sizes.length > 1 ? p.sizes[1] : p.sizes[0]; }
+
+  /* ---- Saved data (stays on this device/browser) ---- */
+  var KEY = "shesh911_benue_store_v1", mem = null;
+  function loadStore() {
+    var d = null;
+    try { d = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    if (!d) d = mem;
+    d = d || {};
+    d.prices = d.prices || {}; d.stock = d.stock || {}; d.orders = d.orders || [];
+    d.whatsapp = d.whatsapp || ""; d.pin = d.pin || DEFAULT_PIN;
+    return d;
+  }
+  var store = loadStore();
+  function save() { mem = store; try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} }
+  function perKg(p) { return store.prices[p.id] !== undefined ? store.prices[p.id] : p.perKg; }
+  function inStock(p) { return store.stock[p.id] !== false; }
+  function priceFor(p, kg) { return perKg(p) * kg; }
+  function waNumber() { return store.whatsapp || WHATSAPP; }
+  function waUrl(text) { return "https://wa.me/" + waNumber() + (text ? "?text=" + encodeURIComponent(text) : ""); }
+  function setLinks() {
+    var u = waUrl("Hello Shesh911 Benue Store, I have a question.");
+    ["#topWhatsapp", "#heroWhatsapp", "#contactWhatsapp"].forEach(function (s) { $(s).href = u; });
+  }
+
+  var cart = {}, activeCat = "All", query = "", lastFocus = null;
+
+  /* ---- Fallback sack drawing (shown until you add a photo) ---- */
+  function sack(p) {
+    var short = p.name.split(" (")[0];
+    var label = short.length > 13 ? short.slice(0, 12) + "." : short;
+    var uid = "b" + p.id.replace(/[^a-z0-9]/g, "");
+    return '<svg class="sack" viewBox="0 0 160 160" role="img" aria-label="Sack of ' + esc(p.name) + '">' +
+      '<defs><pattern id="' + uid + '" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#CDA86A"/><path d="M0 3H6M3 0V6" stroke="#B88F52" stroke-width="1"/></pattern></defs>' +
+      '<ellipse cx="80" cy="150" rx="52" ry="7" fill="rgba(0,0,0,.15)"/>' +
+      '<path d="M42 50 Q80 8 118 50 Q80 66 42 50Z" fill="' + p.color + '" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>' +
+      '<path d="M32 56 Q80 40 128 56 L136 128 Q137 146 118 148 L42 148 Q23 146 24 128Z" fill="url(#' + uid + ')" stroke="#8C6A38" stroke-width="2"/>' +
+      '<path d="M32 62 Q80 46 128 62" fill="none" stroke="#7B5B2E" stroke-width="2" stroke-dasharray="5 4"/>' +
+      '<rect x="44" y="82" width="72" height="42" rx="3" fill="#FBF7E8" stroke="#2A3A2C" stroke-width="2"/>' +
+      '<rect x="44" y="82" width="72" height="9" fill="#0F3D2B"/>' +
+      '<text x="80" y="89.5" font-size="6.5" font-weight="700" fill="#D4AF55" text-anchor="middle" font-family="Georgia,serif">SHESH911 BENUE</text>' +
+      '<text x="80" y="109" font-size="' + (label.length > 9 ? 10 : 12) + '" font-weight="700" fill="#0F3D2B" text-anchor="middle" font-family="Georgia,serif">' + esc(label) + '</text>' +
+      '<text x="80" y="119" font-size="6" font-weight="700" fill="#55645A" text-anchor="middle" font-family="Arial,sans-serif">' + esc(p.cat.toUpperCase()) + '</text></svg>';
+  }
+  // Tries images/<id>.jpg, then .png, then .jpeg, then .webp; removes itself if none exist so the sack shows.
+  var PHOTO_ERR = "var t=this.getAttribute('data-try')|0,x=['.png','.jpeg','.webp'];if(t<x.length){this.setAttribute('data-try',t+1);this.src=this.src.replace(/\\.[a-z]+$/,x[t]);}else{this.remove();}";
+
+  /* ---- Filters + menu ---- */
+  var cats = ["All"];
+  PRODUCTS.forEach(function (p) { if (cats.indexOf(p.cat) < 0) cats.push(p.cat); });
+  function setCat(c) {
+    activeCat = c;
+    var all = $("#chips").querySelectorAll(".chip");
+    for (var i = 0; i < all.length; i++) all[i].setAttribute("aria-pressed", all[i].getAttribute("data-cat") === c);
+    renderGrid();
+  }
+  $("#chips").innerHTML = cats.map(function (c) {
+    return '<button class="chip" type="button" aria-pressed="' + (c === activeCat) + '" data-cat="' + esc(c) + '">' + esc(c) + '</button>';
+  }).join("");
+  $("#chips").addEventListener("click", function (e) { var b = e.target.closest(".chip"); if (b) setCat(b.getAttribute("data-cat")); });
+  $("#menuCats").innerHTML = cats.slice(1).map(function (c) {
+    return '<a class="sub" href="#shop" data-menucat="' + esc(c) + '">' + esc(c) + '</a>';
+  }).join("");
+  $("#q").addEventListener("input", function (e) { query = e.target.value.trim().toLowerCase(); renderGrid(); });
+
+  /* ---- Product grid ---- */
+  function renderGrid() {
+    var list = PRODUCTS.filter(function (p) {
+      return (activeCat === "All" || p.cat === activeCat) &&
+        (!query || (p.name + " " + p.cat + " " + p.desc).toLowerCase().indexOf(query) > -1);
+    });
+    if (!list.length) { $("#grid").innerHTML = '<div class="empty">No products match that search. Try another word, or ask for it on WhatsApp.</div>'; return; }
+    $("#grid").innerHTML = list.map(function (p) {
+      var first = defaultSize(p), ok = inStock(p);
+      var bulk = p.sizes[p.sizes.length - 1] >= 25;
+      return '<article class="card" data-id="' + p.id + '">' +
+        '<div class="art">' + (bulk ? '<span class="badge">Bulk available</span>' : '') + (ok ? '' : '<span class="badge out">Out of stock</span>') +
+          sack(p) + '<img class="photo" src="images/' + p.id + '.jpg" alt="' + esc(p.name) + '" loading="lazy" onerror="' + PHOTO_ERR + '"></div>' +
+        '<div class="card-body">' +
+          '<div><h3>' + esc(p.name) + '</h3><div class="cat">' + esc(p.cat) + '</div></div>' +
+          '<p class="desc">' + esc(p.desc) + '</p>' +
+          '<div class="buy">' +
+            '<div class="price" data-price>' + fmt(priceFor(p, first)) + ' <small>for ' + sizeLabel(first) + '</small></div>' +
+            '<label class="sr-only" for="sz-' + p.id + '">Size for ' + esc(p.name) + '</label>' +
+            '<select id="sz-' + p.id + '" data-size' + (ok ? '' : ' disabled') + '>' +
+              p.sizes.map(function (s) { return '<option value="' + s + '"' + (s === first ? ' selected' : '') + '>' + sizeLabel(s) + ', ' + fmt(priceFor(p, s)) + '</option>'; }).join("") +
+            '</select>' +
+            '<button class="btn" type="button" data-add' + (ok ? '' : ' disabled') + '>' + (ok ? 'Add to cart' : 'Unavailable') + '</button>' +
+          '</div></div></article>';
+    }).join("");
+  }
+  $("#grid").addEventListener("change", function (e) {
+    var sel = e.target.closest("[data-size]"); if (!sel) return;
+    var card = sel.closest(".card"), p = find(card.getAttribute("data-id")), kg = parseFloat(sel.value);
+    card.querySelector("[data-price]").innerHTML = fmt(priceFor(p, kg)) + ' <small>for ' + sizeLabel(kg) + '</small>';
+  });
+  $("#grid").addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-add]"); if (!btn || btn.disabled) return;
+    var card = btn.closest(".card"), p = find(card.getAttribute("data-id"));
+    var kg = parseFloat(card.querySelector("[data-size]").value), key = p.id + "|" + kg;
+    cart[key] = (cart[key] || 0) + 1;
+    updateCart(); toast(p.name + ", " + sizeLabel(kg) + " added to cart");
+  });
+
+  /* ---- Cart ---- */
+  function cartLines() {
+    return Object.keys(cart).map(function (key) {
+      var parts = key.split("|"), p = find(parts[0]), size = parseFloat(parts[1]), qty = cart[key];
+      return { key: key, p: p, size: size, qty: qty, total: priceFor(p, size) * qty };
+    });
+  }
+  function updateCart() {
+    var lines = cartLines(), count = 0, sub = 0;
+    lines.forEach(function (l) { count += l.qty; sub += l.total; });
+    $("#cartCount").textContent = count; $("#subtotal").textContent = fmt(sub);
+    $("#cartFoot").style.display = lines.length ? "" : "none";
+    if (!lines.length) { $("#cartBody").innerHTML = '<div class="empty">Your cart is empty. Add a product to start your order.</div>'; return; }
+    $("#cartBody").innerHTML = lines.map(function (l) {
+      return '<div class="line-item" data-key="' + l.key + '">' +
+        '<div><div class="t">' + esc(l.p.name) + '</div><div class="s">' + sizeLabel(l.size) + ' bag, ' + fmt(priceFor(l.p, l.size)) + ' each</div></div>' +
+        '<div class="p">' + fmt(l.total) + '</div>' +
+        '<div class="qty" role="group" aria-label="Quantity of ' + esc(l.p.name) + '"><button type="button" data-dec aria-label="Decrease quantity">&minus;</button><span>' + l.qty + '</span><button type="button" data-inc aria-label="Increase quantity">+</button></div>' +
+        '<div style="text-align:right"><button class="link-btn" type="button" data-remove>Remove</button></div></div>';
+    }).join("");
+  }
+  $("#cartBody").addEventListener("click", function (e) {
+    var row = e.target.closest(".line-item"); if (!row) return;
+    var key = row.getAttribute("data-key");
+    if (e.target.closest("[data-inc]")) cart[key]++;
+    else if (e.target.closest("[data-dec]")) { cart[key]--; if (cart[key] <= 0) delete cart[key]; }
+    else if (e.target.closest("[data-remove]")) delete cart[key];
+    else return;
+    updateCart();
+  });
+  function openCart() { lastFocus = document.activeElement; $("#drawer").classList.add("open"); $("#overlay").classList.add("open"); document.body.style.overflow = "hidden"; $("#closeCart").focus(); }
+  function closeCart() { $("#drawer").classList.remove("open"); $("#overlay").classList.remove("open"); document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  $("#openCart").addEventListener("click", openCart);
+  $("#closeCart").addEventListener("click", closeCart);
+  $("#overlay").addEventListener("click", closeCart);
+
+  $("#sendOrder").addEventListener("click", function () {
+    var name = $("#cName").value.trim(), phone = $("#cPhone").value.trim(), addr = $("#cAddr").value.trim();
+    var err = $("#formError"), lines = cartLines();
+    if (!lines.length) { err.textContent = "Your cart is empty."; return; }
+    if (!name || !phone || !addr) { err.textContent = "Enter your name, phone number and delivery address."; return; }
+    err.textContent = "";
+    var sub = 0; lines.forEach(function (l) { sub += l.total; });
+    var msg = ["Hello Shesh911 Benue Store, I would like to order:", ""]
+      .concat(lines.map(function (l) { return l.qty + " x " + l.p.name + ", " + sizeLabel(l.size) + " = " + fmt(l.total); }))
+      .concat(["", "Subtotal: " + fmt(sub), "", "Name: " + name, "Phone: " + phone, "Delivery address: " + addr, "", "Please confirm the final price and delivery cost."]).join("\n");
+    store.orders.push({ t: Date.now(), name: name, phone: phone, addr: addr, total: sub,
+      lines: lines.map(function (l) { return { n: l.p.name, s: l.size, q: l.qty, t: l.total }; }) });
+    save();
+    window.open(waUrl(msg), "_blank");
+  });
+
+  /* ---- Dropdown menu ---- */
+  var menuBtn = $("#menuBtn"), menuPanel = $("#menuPanel");
+  function menuOpen(open) { menuPanel.hidden = !open; menuBtn.setAttribute("aria-expanded", open); }
+  menuBtn.addEventListener("click", function (e) { e.stopPropagation(); menuOpen(menuPanel.hidden); });
+  menuPanel.addEventListener("click", function (e) {
+    var c = e.target.closest("[data-menucat]");
+    if (c) setCat(c.getAttribute("data-menucat"));
+    if (c || e.target.closest("[data-close]")) menuOpen(false);
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest("#dd")) menuOpen(false); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    menuOpen(false);
+    if ($("#drawer").classList.contains("open")) closeCart();
+    if (!$("#dash").hidden) closeDash();
+  });
+
+  /* ---- Dashboard ---- */
+  var unlocked = false;
+  function openDash() {
+    menuOpen(false); lastFocus = document.activeElement;
+    $("#dash").hidden = false; document.body.style.overflow = "hidden";
+    $("#dashGate").hidden = unlocked; $("#dashApp").hidden = !unlocked;
+    if (unlocked) renderDash(); else { $("#pin").value = ""; $("#pinError").textContent = ""; $("#pin").focus(); }
+  }
+  function closeDash() { $("#dash").hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  $("#openDash").addEventListener("click", openDash);
+  $("#closeDash").addEventListener("click", closeDash);
+  function tryUnlock() {
+    if ($("#pin").value === store.pin) { unlocked = true; $("#dashGate").hidden = true; $("#dashApp").hidden = false; renderDash(); }
+    else $("#pinError").textContent = "Incorrect PIN.";
+  }
+  $("#unlock").addEventListener("click", tryUnlock);
+  $("#pin").addEventListener("keydown", function (e) { if (e.key === "Enter") tryUnlock(); });
+  $("#dashApp").addEventListener("click", function (e) {
+    var t = e.target.closest(".tab"); if (!t) return;
+    var all = document.querySelectorAll(".tab");
+    for (var i = 0; i < all.length; i++) {
+      var on = all[i] === t;
+      all[i].setAttribute("aria-selected", on);
+      $("#tab-" + all[i].getAttribute("data-tab")).hidden = !on;
+    }
+  });
+
+  function renderDash() {
+    var orders = store.orders, total = 0, stocked = 0;
+    orders.forEach(function (o) { total += o.total; });
+    PRODUCTS.forEach(function (p) { if (inStock(p)) stocked++; });
+
+    $("#tab-overview").innerHTML =
+      '<div class="kpis">' +
+        '<div class="kpi"><b>' + orders.length + '</b><span>Orders sent to WhatsApp</span></div>' +
+        '<div class="kpi"><b>' + fmt(total) + '</b><span>Total value of those orders</span></div>' +
+        '<div class="kpi"><b>' + stocked + ' of ' + PRODUCTS.length + '</b><span>Products in stock</span></div>' +
+        '<div class="kpi"><b>' + esc(waNumber()) + '</b><span>WhatsApp number in use</span></div>' +
+      '</div>' +
+      '<div class="panel"><h3>Notes</h3><p class="fine" style="margin-top:.5rem">Orders are logged when a customer taps "Send order on WhatsApp" on this device. They show intent to buy, not confirmed payment. This dashboard saves data in this browser only.</p></div>';
+
+    $("#tab-products").innerHTML = '<div class="panel"><div class="prow head"><span>Product</span><span>Price per kg (₦)</span><span>In stock</span></div>' +
+      PRODUCTS.map(function (p) {
+        return '<div class="prow" data-pid="' + p.id + '"><span>' + esc(p.name) + '</span>' +
+          '<input type="number" min="0" step="10" inputmode="numeric" value="' + perKg(p) + '" aria-label="Price per kg for ' + esc(p.name) + '">' +
+          '<label class="tg"><input type="checkbox" ' + (inStock(p) ? 'checked' : '') + ' aria-label="In stock: ' + esc(p.name) + '"></label></div>';
+      }).join("") + '</div>';
+
+    var ol = orders.slice().reverse();
+    $("#tab-orders").innerHTML = '<div class="panel">' + (ol.length ? ol.map(function (o) {
+      return '<div class="order"><b>' + esc(o.name) + '</b> <span class="meta">' + esc(o.phone) + ', ' + new Date(o.t).toLocaleString() + '</span>' +
+        '<div class="meta">' + esc(o.addr) + '</div><ul>' +
+        o.lines.map(function (l) { return '<li>' + l.q + ' x ' + esc(l.n) + ', ' + sizeLabel(l.s) + ' (' + fmt(l.t) + ')</li>'; }).join("") +
+        '</ul><b>Total: ' + fmt(o.total) + '</b></div>';
+    }).join("") : '<div class="empty" style="border:0">No orders logged yet.</div>') +
+      (ol.length ? '<p style="margin-top:1rem"><button class="btn btn-outline btn-small" id="clearOrders">Clear order log</button></p>' : '') + '</div>';
+
+    $("#tab-settings").innerHTML = '<div class="panel">' +
+      '<div class="field"><label for="sWa">WhatsApp number (digits only, e.g. 2348012345678)</label><input id="sWa" type="text" inputmode="numeric" value="' + esc(store.whatsapp) + '" placeholder="' + esc(WHATSAPP) + '"></div>' +
+      '<div class="field"><label for="sPin">New PIN (4 to 8 digits, leave blank to keep current)</label><input id="sPin" type="password" inputmode="numeric"></div>' +
+      '<div class="error" id="sErr" role="alert"></div>' +
+      '<button class="btn" id="saveSettings">Save settings</button> ' +
+      '<button class="btn btn-outline" id="resetAll">Reset prices and stock</button>' +
+      '<p class="fine">The PIN only hides this screen. It is not real security, because the data and code live in the browser. For multi-device access you need a backend.</p></div>';
+  }
+
+  $("#tab-products").addEventListener("change", function (e) {
+    var row = e.target.closest(".prow"); if (!row) return;
+    var id = row.getAttribute("data-pid");
+    if (e.target.type === "checkbox") store.stock[id] = e.target.checked;
+    else { var v = parseFloat(e.target.value); if (isFinite(v) && v >= 0) store.prices[id] = v; }
+    save(); renderGrid(); updateCart(); toast("Saved");
+  });
+  $("#tab-orders").addEventListener("click", function (e) {
+    if (e.target.id === "clearOrders" && confirm("Clear all logged orders on this device?")) { store.orders = []; save(); renderDash(); showTab("orders"); }
+  });
+  $("#tab-settings").addEventListener("click", function (e) {
+    if (e.target.id === "saveSettings") {
+      var wa = $("#sWa").value.replace(/\s|\+/g, ""), pin = $("#sPin").value, err = $("#sErr");
+      if (wa && !/^\d{10,15}$/.test(wa)) { err.textContent = "WhatsApp number must be 10 to 15 digits, with country code."; return; }
+      if (pin && !/^\d{4,8}$/.test(pin)) { err.textContent = "PIN must be 4 to 8 digits."; return; }
+      err.textContent = ""; store.whatsapp = wa; if (pin) store.pin = pin;
+      save(); setLinks(); renderDash(); showTab("settings"); toast("Settings saved");
+    }
+    if (e.target.id === "resetAll" && confirm("Reset all prices and stock to the defaults?")) {
+      store.prices = {}; store.stock = {}; save(); renderGrid(); updateCart(); renderDash(); showTab("settings"); toast("Reset done");
+    }
+  });
+  function showTab(name) {
+    var all = document.querySelectorAll(".tab");
+    for (var i = 0; i < all.length; i++) {
+      var on = all[i].getAttribute("data-tab") === name;
+      all[i].setAttribute("aria-selected", on); $("#tab-" + all[i].getAttribute("data-tab")).hidden = !on;
+    }
+  }
+
+  /* ---- Hero photo + official emblem (both optional) ---- */
+  (function () {
+    var h = new Image();
+    h.onload = function () { var ph = document.createElement("img"); ph.className = "photo"; ph.alt = "Shesh911 Benue Store produce"; ph.src = h.src; $("#heroVisual").style.minHeight = "300px"; $("#heroVisual").appendChild(ph); };
+    h.src = "images/hero.jpg";
+    var em = new Image();
+    em.onload = function () {
+      $("#wmGroup").innerHTML = '<image href="images/benue-emblem.png" x="190" y="-25" width="270" height="270" preserveAspectRatio="xMidYMid meet"/>';
+    };
+    em.src = "images/benue-emblem.png";
+  })();
+
+  var tt;
+  function toast(text) { var t = $("#toast"); t.textContent = text; t.classList.add("show"); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove("show"); }, 1800); }
+
+  $("#yr").textContent = new Date().getFullYear();
+  $("#statCount").textContent = PRODUCTS.length;
+  setLinks(); renderGrid(); updateCart();
+</script>
+</body>
+</html>
